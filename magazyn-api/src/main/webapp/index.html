@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML5 + REST Hello World</title>
+<link rel="stylesheet" href="css/styles.css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$( document ).ready( function() {
+    $( '#sayHello' ).click( function( event ) {
+        //console.log("clicked: " + name);
+        $.ajax( 'localhost:8080/allegro-provider/rest/login', {
+            dataType:'json',
+            data:{},
+            type:'GET',
+            success:function ( data ) {
+                //console.log("success: " + data.aString);
+                $( '#result' ).text( data.aString );
+            }
+        })
+        .error( function() {
+            //console.log("error");
+        });
+    });
+}); // (document).ready
+</script>
+</head>
+<body>
+HTML5 + REST Hello World<br>
+<form name="theForm">
+    <fieldset>
+        <label for="name" id="name_label">Name</label>
+        <input name="name" id="name" type="text" required placeholder="Your Name"/>
+        <input type="submit" id="sayHello" value="Say Hello"/><span id="result"></span>
+    </fieldset>
+</form>
+
+</body>
+</html>
