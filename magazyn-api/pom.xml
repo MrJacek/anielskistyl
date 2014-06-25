@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>anielskistyl</artifactId>
-    <groupId>pl.nicecode.anielskistyl</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+        <artifactId>anielskistyl</artifactId>
+        <groupId>pl.nicecode.anielskistyl</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <groupId>pl.nicecode.anielskistyl</groupId>
     <artifactId>magazyn-api</artifactId>
@@ -14,10 +14,10 @@
 
     <name>magazyn-api</name>
 
-      <properties>
+    <properties>
         <!-- Explicitly declaring the source encoding eliminates the following message: -->
         <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
-            resources, i.e. build is platform dependent! -->
+        resources, i.e. build is platform dependent! -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- JBoss dependency versions -->
@@ -40,10 +40,10 @@
     <dependencyManagement>
         <dependencies>
             <!-- JBoss distributes a complete set of Java EE 7 APIs including
-                a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or 
-                a collection) of artifacts. We use this here so that we always get the correct 
-                versions of artifacts. Here we use the jboss-javaee-7.0 stack (you can read
-                this as the JBoss stack of the Java EE 7 APIs) -->
+            a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or 
+            a collection) of artifacts. We use this here so that we always get the correct 
+            versions of artifacts. Here we use the jboss-javaee-7.0 stack (you can read
+            this as the JBoss stack of the Java EE 7 APIs) -->
 
             <!--This BOM builds on the Java EE full profile BOM, adding Arquillian to the mix. It also provides a
             version of JUnit and TestNG recommended for use with Arquillian.
@@ -69,7 +69,7 @@
         </dependency>
 
         <!-- Import the Common Annotations API (JSR-250), we use provided 
-            scope as the API is included in JBoss WildFly -->
+        scope as the API is included in JBoss WildFly -->
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
             <artifactId>jboss-annotations-api_1.2_spec</artifactId>
@@ -81,6 +81,39 @@
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>jaxrs-api</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.faces</groupId>
+            <artifactId>jboss-jsf-api_2.2_spec</artifactId>
+        </dependency>
+
+        <dependency>  
+            <groupId>org.primefaces</groupId>  
+            <artifactId>primefaces</artifactId>  
+            <version>5.0</version>  
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.0.6.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.0.6.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxb-provider</artifactId>
+            <version>3.0.6.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
+            <version>3.0.6.Final</version>
         </dependency>
     </dependencies>
 

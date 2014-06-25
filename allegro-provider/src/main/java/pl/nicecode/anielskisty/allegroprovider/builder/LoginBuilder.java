@@ -6,6 +6,8 @@
 package pl.nicecode.anielskisty.allegroprovider.builder;
 
 import allegro.DoLoginRequest;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  *
@@ -13,12 +15,15 @@ import allegro.DoLoginRequest;
  */
 public class LoginBuilder {
 
-    public DoLoginRequest build(long version) {
+    public DoLoginRequest build(long version) throws IOException {
         DoLoginRequest request = new DoLoginRequest();
-        request.setUserLogin("");
-        request.setUserPassword("");
+        
+        Properties prop=new Properties();
+        prop.load(LoginBuilder.class.getResourceAsStream("allegro.properties"));
+        request.setUserLogin(prop.getProperty("allegro.user"));
+        request.setUserPassword(prop.getProperty("allegro.password"));
         request.setCountryCode(1);
-        request.setWebapiKey("");
+        request.setWebapiKey(prop.getProperty("allegro.key"));
         request.setLocalVersion(version);
         return request;
     }
