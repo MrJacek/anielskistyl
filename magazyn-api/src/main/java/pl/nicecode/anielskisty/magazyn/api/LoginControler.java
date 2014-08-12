@@ -27,12 +27,12 @@ public class LoginControler {
         
         try {
 
-             myResource.request(MediaType.APPLICATION_JSON).get(null);
+//             myResource.request(MediaType.APPLICATION_JSON).get(null);
 
         } catch (Exception e) {
             System.out.println("Exception : " + e.getMessage());
             e.printStackTrace();
         }
-        return wrapper.getList();
+//        return wrapper.getList();
     }
 }
