@@ -5,11 +5,9 @@
  */
 package pl.nicecode.anielskisty.allegroprovider.builder;
 
-import allegro.DoLoginRequest;
+import allegro.api.DoLoginRequest;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -17,20 +15,16 @@ import java.util.logging.Logger;
  */
 public class LoginBuilder {
 
+    private static final String NOTSET_VALUE = "NOTSET";
     private final String login;
     private final String password;
     private final String key;
 
-    public LoginBuilder() {
-        try {
-            Properties prop = new Properties();
-            prop.load(LoginBuilder.class.getResourceAsStream("allegro.properties"));
-            login = prop.getProperty("allegro.user");
-            password = prop.getProperty("allegro.password");
-            key = prop.getProperty("allegro.key");
-        } catch (IOException ex) {
-            throw new IllegalStateException("Can't load user cardinals from properties.");
-        }
+    public LoginBuilder(final String login, final String password) {
+
+        this.login = login;
+        this.password = password;
+        key = "sd99aef3";
     }
 
     public DoLoginRequest build(long version) {
