@@ -26,6 +26,11 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
+            <groupId>pl.nicecode.anielskistyl</groupId>
+            <artifactId>allegro-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -41,11 +46,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <!--        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jetty</artifactId>
-            <scope>provided</scope>
-        </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -68,22 +68,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <!-- tag::wsdl[] -->
-            <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <configuration>
-                    <schemaLanguage>WSDL</schemaLanguage>
-                    <generatePackage>hello.wsdl</generatePackage>
-                    <generatePackage>allegro.api</generatePackage>
-                    <forceRegenerate>true</forceRegenerate>
-                    <schemas>
-                        <schema>
-                            <url>https://webapi.allegro.pl.webapisandbox.pl/service.php?wsdl</url>
-                        </schema>
-                    </schemas>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>

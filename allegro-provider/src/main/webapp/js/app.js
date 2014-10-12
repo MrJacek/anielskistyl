@@ -9,7 +9,7 @@ var LoginCtrl = function($scope, $http) {
         password: ''
     };
     $scope.doLogin = function(credentials) {
-        $http.get("http://localhost:8080/login?user=" + credentials.username + "&password=" + credentials.password)
+        $http.get("https://localhost:8080/allegrologin?user=" + credentials.username + "&password=" + credentials.password)
                 .success(function(response) {
                     $scope.sessionHandler = response;
                 });

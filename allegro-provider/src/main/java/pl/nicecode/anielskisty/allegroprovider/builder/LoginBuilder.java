@@ -5,9 +5,7 @@
  */
 package pl.nicecode.anielskisty.allegroprovider.builder;
 
-import allegro.api.DoLoginRequest;
-import java.io.IOException;
-import java.util.Properties;
+import pl.nicecode.allegro.api.DoLoginRequest;
 
 /**
  *

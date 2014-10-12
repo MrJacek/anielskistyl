@@ -1,10 +1,10 @@
 package pl.nicecode.anielskisty.allegroprovider.ws;
 
 import pl.nicecode.anielskisty.allegroprovider.builder.LoginBuilder;
-import allegro.api.DoLoginRequest;
-import allegro.api.DoLoginResponse;
-import allegro.api.DoQuerySysStatusRequest;
-import allegro.api.DoQuerySysStatusResponse;
+import pl.nicecode.allegro.api.DoLoginRequest;
+import pl.nicecode.allegro.api.DoLoginResponse;
+import pl.nicecode.allegro.api.DoQuerySysStatusRequest;
+import pl.nicecode.allegro.api.DoQuerySysStatusResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;

@@ -32,7 +32,7 @@ public class LoginRestIT {
         HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
 
         ResponseEntity<String> entity = template.getForEntity(
-                "http://localhost:8080/login", String.class);
+                "https://localhost:8080/allegrologin", String.class);
         
         assertEquals(HttpStatus.OK, entity.getStatusCode());
         String sessionHandle = entity.getBody();

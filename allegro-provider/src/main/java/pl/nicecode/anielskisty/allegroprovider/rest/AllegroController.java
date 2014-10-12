@@ -22,7 +22,7 @@ public class AllegroController {
     @Autowired
     AllegroClient client;
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/allegrologin")
     public String login(@RequestParam(value = "user") String user, @RequestParam(value = "password") String password) {
         System.out.println("client: " + client.toString());
         return client.login(user, password);
