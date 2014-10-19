@@ -34,7 +34,6 @@ public class AllegroConfiguration extends WebMvcConfigurerAdapter {
 //        registry.addViewController("/login").setViewName("login");
 //        registry.addViewController("/errror").setViewName("errror");
 //    }
-
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
@@ -69,7 +68,32 @@ public class AllegroConfiguration extends WebMvcConfigurerAdapter {
                 + "=======================================");
 
         TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
-        factory.addConnectorCustomizers((TomcatConnectorCustomizer) (Connector con) -> {
+        factory.addConnectorCustomizers(new MyConnectorCustomizer());
+//        (TomcatConnectorCustomizer) (Connector con) -> {
+//            con.setScheme("https");
+//            con.setSecure(true);
+//            Http11NioProtocol proto = (Http11NioProtocol) con.getProtocolHandler();
+//            proto.setSSLEnabled(true);
+//            proto.setKeystoreFile(keystoreFile);
+//            proto.setKeystorePass(keystorePass);
+//            proto.setKeystoreType(keystoreType);
+//            proto.setProperty("keystoreProvider", keystoreProvider);
+//            proto.setKeyAlias(keystoreAlias);
+//        });
+
+        return factory;
+    }
+
+    public static class MyConnectorCustomizer implements TomcatConnectorCustomizer {
+
+        final String keystoreFile = "Z:\\repo\\anielskistyl\\keystore.p12";
+        final String keystorePass = "zaq12wsx";
+        final String keystoreType = "PKCS12";
+        final String keystoreProvider = "SunJSSE";
+        final String keystoreAlias = "tomcat";
+
+        @Override
+        public void customize(Connector con) {
             con.setScheme("https");
             con.setSecure(true);
             Http11NioProtocol proto = (Http11NioProtocol) con.getProtocolHandler();
@@ -79,9 +103,8 @@ public class AllegroConfiguration extends WebMvcConfigurerAdapter {
             proto.setKeystoreType(keystoreType);
             proto.setProperty("keystoreProvider", keystoreProvider);
             proto.setKeyAlias(keystoreAlias);
-        });
+        }
 
-        return factory;
     }
 
     @Bean
