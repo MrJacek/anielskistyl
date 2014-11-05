@@ -16,7 +16,8 @@ import pl.nicecode.anielskisty.allegroprovider.ws.AllegroClient;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
-public class AllegroConfiguration {
+public class AllegroConfiguration  {
+
 
     @Bean
     public Jaxb2Marshaller marshaller() {
@@ -34,24 +35,25 @@ public class AllegroConfiguration {
         return client;
     }
 
-//    @Configuration
-//    @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-//    protected static class ApplicationSecurity extends WebSecurityConfigurerAdapter {
-//
-//        @Autowired
-//        private SecurityProperties security;
-//
-//        @Override
-//        protected void configure(HttpSecurity http) throws Exception {
-//            http.authorizeRequests().anyRequest().fullyAuthenticated().and().formLogin()
-//                    .loginPage("/login").failureUrl("/login?error").permitAll();
-//        }
-//
-//        @Override
-//        public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//            auth.inMemoryAuthentication().withUser("admin").password("admin")
-//                    .roles("ADMIN", "USER").and().withUser("user").password("user")
-//                    .roles("USER");
-//        }
-//    }
+    @Configuration
+    @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+    protected static class ApplicationSecurity extends WebSecurityConfigurerAdapter {
+
+        @Autowired
+        private SecurityProperties security;
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            
+            http.authorizeRequests().anyRequest().fullyAuthenticated().and().formLogin()
+                    .permitAll();
+        }
+
+        @Override
+        public void configure(AuthenticationManagerBuilder auth) throws Exception {
+            auth.inMemoryAuthentication().withUser("admin").password("admin")
+                    .roles("ADMIN", "USER").and().withUser("user").password("user")
+                    .roles("USER");
+        }
+    }
 }
