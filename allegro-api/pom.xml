@@ -38,7 +38,6 @@
                 <artifactId>maven-jaxb2-plugin</artifactId>
                 <configuration>
                     <schemaLanguage>WSDL</schemaLanguage>
-                    <generatePackage>hello.wsdl</generatePackage>
                     <generatePackage>allegro.api</generatePackage>
                     <forceRegenerate>true</forceRegenerate>
                     <schemas>
