@@ -8,9 +8,8 @@
     <packaging>pom</packaging>
     
     <modules>
+        <module>allegro-api</module>
         <module>allegro-provider</module>
-        <module>magazyn-service</module>
-        <module>magazyn-api</module>
     </modules>
     
     <properties>
