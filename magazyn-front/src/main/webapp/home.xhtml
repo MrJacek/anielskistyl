@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <ui:param name="root" value="#{request.contextPath}/" />
+        <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"></link>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <!-- Overriding default CSS of primefaces -->
+        <style>
+            .ui-widget {
+                font-size: 14px;
+            }
+        </style>
+
+
+
+        <title>Spring PrimeFaces Tutorial</title>
+
+    </h:head>
+    <h:body>
+        <div>
+            <h:form>
+                <p:growl id="growl" life="2000" />
+
+                <p:commandButton value="Ajax Submit" id="ajax" update="growl" actionListener="#{buttonView.buttonAction}" styleClass="ui-priority-primary" />
+
+                <!--<p:commandButton value="Non-Ajax Submit" id="nonAjax" actionListener="#{buttonView.buttonAction}" ajax="false" />-->
+
+                <p:commandButton value="With Icon" id="withIcon" actionListener="#{buttonView.buttonAction}" update="growl" icon="ui-icon-disk" />
+
+                <p:commandButton actionListener="#{buttonView.buttonAction}" id="iconOnly" update="growl" icon="ui-icon-disk" title="Icon Only" />
+
+                <p:commandButton value="Disabled" id="disabled" disabled="true" />
+                
+            </h:form>
+        </div>
+    </h:body>
+</html>
