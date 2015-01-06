@@ -10,7 +10,7 @@
     </parent>
     
     <artifactId>allegro-provider</artifactId>
-    <packaging>war</packaging>
+
      
     <dependencyManagement>
         <dependencies>
@@ -36,10 +36,6 @@
         <dependency>
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

@@ -6,11 +6,7 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import pl.nicecode.anielskisty.allegroprovider.ws.AllegroClient;
 
 @Configuration
@@ -34,26 +30,26 @@ public class AllegroConfiguration  {
         client.setUnmarshaller(marshaller);
         return client;
     }
-
-    @Configuration
-    @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-    protected static class ApplicationSecurity extends WebSecurityConfigurerAdapter {
-
-        @Autowired
-        private SecurityProperties security;
-
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            
-            http.authorizeRequests().anyRequest().fullyAuthenticated().and().formLogin()
-                    .permitAll();
-        }
-
-        @Override
-        public void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication().withUser("admin").password("admin")
-                    .roles("ADMIN", "USER").and().withUser("user").password("user")
-                    .roles("USER");
-        }
-    }
+//
+//    @Configuration
+//    @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+//    protected static class ApplicationSecurity extends WebSecurityConfigurerAdapter {
+//
+//        @Autowired
+//        private SecurityProperties security;
+//
+//        @Override
+//        protected void configure(HttpSecurity http) throws Exception {
+//            
+//            http.authorizeRequests().anyRequest().fullyAuthenticated().and().formLogin()
+//                    .permitAll();
+//        }
+//
+//        @Override
+//        public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//            auth.inMemoryAuthentication().withUser("admin").password("admin")
+//                    .roles("ADMIN", "USER").and().withUser("user").password("user")
+//                    .roles("USER");
+//        }
+//    }
 }

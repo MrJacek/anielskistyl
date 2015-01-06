@@ -7,8 +7,8 @@ package pl.nicecode.anielskisty.allegroprovider.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.nicecode.anielskisty.allegroprovider.ws.AllegroClient;
 
@@ -23,8 +23,10 @@ public class AllegroController {
     AllegroClient client;
 
     @RequestMapping(value = "/loginAllegro")
-    public String login(@RequestParam(value = "user") String user, @RequestParam(value = "password") String password) {
+    @ResponseBody
+    public AllegroToken login(@RequestParam(value = "user") String user, @RequestParam(value = "password") String password) {
         System.out.println("client: " + client.toString());
-        return client.login(user, password);
+        AllegroToken token = new AllegroToken(client.login(user, password));
+        return token;
     }
 }
