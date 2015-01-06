@@ -19,16 +19,15 @@
                     <div class="input-group">
                         <span class="input-group-addon">Allegro login</span>
                         <input ng-model="login" type="text"></input>
-                    </div>
-                    <div class="input-group">
                         <span class="input-group-addon">Allegro password</span>
                         <input ng-model="password" type="password"></input>
                     </div>
+                    <div  class="btn-group-vertical">
+                        <button ng-href='#here' ng-click="doLogin()" class="btn btn-default">Connect to allegro</button>
+                    </div>
                 </div>
             </div>
-            <div  class="btn-group-vertical">
-                <button ng-href='#here' ng-click="doLogin()" class="btn btn-default">Connect to allegro</button>
-            </div>
+
         </div>
 
     </body>
