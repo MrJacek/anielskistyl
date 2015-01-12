@@ -6,8 +6,6 @@
 package pl.nicecode.anielskisty.allegroprovider.builder;
 
 import allegro.api.DoLoginRequest;
-import java.io.IOException;
-import java.util.Properties;
 
 /**
  *
@@ -20,11 +18,11 @@ public class LoginBuilder {
     private final String password;
     private final String key;
 
-    public LoginBuilder(final String login, final String password) {
+    public LoginBuilder(final String key, final String login, final String password) {
 
         this.login = login;
         this.password = password;
-        key = "sd99aef3";
+        this.key = key;
     }
 
     public DoLoginRequest build(long version) {

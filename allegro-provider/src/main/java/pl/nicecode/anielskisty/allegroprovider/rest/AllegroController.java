@@ -5,6 +5,7 @@
  */
 package pl.nicecode.anielskisty.allegroprovider.rest;
 
+import allegro.api.DoGetMySoldItemsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,9 +25,14 @@ public class AllegroController {
 
     @RequestMapping(value = "/loginAllegro")
     @ResponseBody
-    public AllegroToken login(@RequestParam(value = "user") String user, @RequestParam(value = "password") String password) {
-        System.out.println("client: " + client.toString());
-        AllegroToken token = new AllegroToken(client.login(user, password));
+    public AllegroToken login(@RequestParam(value = "key") String key, @RequestParam(value = "user") String user, @RequestParam(value = "password") String password) {
+        AllegroToken token = new AllegroToken(client.login(key, user, password));
         return token;
+    }
+
+    @RequestMapping(value = "/getSoldItems")
+    @ResponseBody
+    public DoGetMySoldItemsResponse login(@RequestParam(value = "session") String session) {
+        return client.getSoldItems(session);
     }
 }

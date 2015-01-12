@@ -42,7 +42,7 @@
                     <forceRegenerate>true</forceRegenerate>
                     <schemas>
                         <schema>
-                            <url>https://webapi.allegro.pl.webapisandbox.pl/service.php?wsdl</url>
+                            <url>https://webapi.allegro.pl/service.php?wsdl</url>
                         </schema>
                     </schemas>
                 </configuration>
