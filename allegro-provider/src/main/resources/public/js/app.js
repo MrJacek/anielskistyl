@@ -8,6 +8,7 @@ angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit']
                 var login = $resource("http://192.168.0.12:8080/loginAllegro?key=:key&user=:login&password=:password");
                 var soldItems = $resource("http://192.168.0.12:8080/getSoldItems?session=:session");
 //                var allegro = $resource("http://localhost:9000/hello-world?name=:login");
+                $scope.ui="btn btn-default";
                 $scope.cardinals = {};
                 $scope.items = {};
                 $scope.doLogin = function (cardinals) {
@@ -15,6 +16,7 @@ angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit']
 //                    var token = allegro.get({login: $scope.login});
                     token.$promise.then(function (data) {
                         $scope.cardinals.session = data['token'];
+                        $scope.ui="btn btn-success";
                     });
                 };
                 $scope.showSoldItems = function () {
