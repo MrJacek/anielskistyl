@@ -15,7 +15,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  *
  * @author jhojczak
  */
-@RepositoryRestResource(collectionResourceRel = "itme", path = "item")
+@RepositoryRestResource(collectionResourceRel = "item", path = "item")
 public interface ItemRepository extends CrudRepository<Item, Integer> {
     List<Item> findByTitle(@Param("title") String name);
 

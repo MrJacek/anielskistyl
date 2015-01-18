@@ -7,10 +7,11 @@ angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit']
         .controller("index", ["$scope", "$resource", function ($scope, $resource) {
                 var login = $resource("http://localhost:8080/loginAllegro?key=:key&login=:login&password=:password");
                 var soldItems = $resource("http://localhost:8080/soldItems?session=:session");
-//                var allegro = $resource("http://localhost:9000/hello-world?name=:login");
+                var dbItems = $resource("http://localhost:8080/item/");
                 $scope.ui = "btn btn-default";
                 $scope.cardinals = {};
-                $scope.items = {};
+                $scope.itemsToDB = [];
+                
                 $scope.doLogin = function (cardinals) {
                     var token = login.get({key: cardinals.key, login: cardinals.login, password: cardinals.password});
 //                    var token = allegro.get({login: $scope.login});
@@ -32,9 +33,17 @@ angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit']
                     ],
                     data: []
                 };
-
-
+                $scope.saveItems = function (itmes) {
+                    for (var i in itmes) {
+                        var item = {};
+                        item.allegroId = item['id'];
+                        item.title = item['itemTitle'];
+                        item.imgLink = item['itemThumbnailUrl'];
+                        $scope.itemsToDB.push(item);
+                        dbItems.save(item);
+                    }
+                };
                 $scope.showClients = function () {
-                    
+
                 };
             }]);

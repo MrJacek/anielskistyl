@@ -39,7 +39,8 @@
                     </accordion-group> 
                     <accordion-group heading="Actions" >
                         <div class="row">
-                            <button class='btn btn-default' ng-click="showSoldItems()">Pokaz aukcje</button>
+                            <button class='btn btn-default' ng-click="showSoldItems()">Pokaz sprzedane przedmioty</button>
+                            <button class='btn btn-default' ng-click="saveItems(grid_options.data)">Zapisz sprzedane przedmioty w bazie</button>
                             <button class='btn btn-default' ng-click="showClients()">Pokaz klientow</button>
                         </div>
                     </accordion-group>
@@ -50,6 +51,8 @@
                             </div>
                         </div>
                         <!--<div id="grid1" ui-grid="items.grid_option" class="grid"></div>-->
+                    </accordion-group>
+                    <accordion-group heading="Baza danych" >
                     </accordion-group>
                 </accordion>
 
