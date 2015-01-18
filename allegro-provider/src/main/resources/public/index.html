@@ -44,11 +44,12 @@
                         </div>
                     </accordion-group>
                     <accordion-group heading="Items" >
-                        <div ng-repeat="item in items.sold">{{item['itemTitle']}}
+                        <div ng-repeat="item in grid_options.data">{{item['itemTitle']}}
                             <div style="height: 48px">
                                 <img ng-src="{{item['itemThumbnailUrl']}}" style="margin:auto;"/>
                             </div>
                         </div>
+                        <!--<div id="grid1" ui-grid="items.grid_option" class="grid"></div>-->
                     </accordion-group>
                 </accordion>
 

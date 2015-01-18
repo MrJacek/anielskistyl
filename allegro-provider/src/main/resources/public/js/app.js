@@ -5,29 +5,36 @@
  */
 angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit'])
         .controller("index", ["$scope", "$resource", function ($scope, $resource) {
-                var login = $resource("http://192.168.0.12:8080/loginAllegro?key=:key&user=:login&password=:password");
-                var soldItems = $resource("http://192.168.0.12:8080/getSoldItems?session=:session");
+                var login = $resource("http://localhost:8080/loginAllegro?key=:key&login=:login&password=:password");
+                var soldItems = $resource("http://localhost:8080/soldItems?session=:session");
 //                var allegro = $resource("http://localhost:9000/hello-world?name=:login");
-                $scope.ui="btn btn-default";
+                $scope.ui = "btn btn-default";
                 $scope.cardinals = {};
                 $scope.items = {};
                 $scope.doLogin = function (cardinals) {
-                    var token = login.get({key: cardinals.key ,login: cardinals.login, password: cardinals.password});
+                    var token = login.get({key: cardinals.key, login: cardinals.login, password: cardinals.password});
 //                    var token = allegro.get({login: $scope.login});
                     token.$promise.then(function (data) {
                         $scope.cardinals.session = data['token'];
-                        $scope.ui="btn btn-success";
+                        $scope.ui = "btn btn-success";
                     });
                 };
                 $scope.showSoldItems = function () {
                     var result = soldItems.get({session: $scope.cardinals.session});
                     result.$promise.then(function (data) {
-                        $scope.items.sold= data.soldItemsList.item;
+                        $scope.grid_options.data = data.soldItemsList.item;
                     });
                 };
+                $scope.grid_options = {
+                    columnDefs: [
+                        {name: 'Id', field: 'itemId'},
+                        {name: 'Tytuł', field: 'itemTitle'}
+                    ],
+                    data: []
+                };
 
-               
+
                 $scope.showClients = function () {
-
+                    
                 };
             }]);

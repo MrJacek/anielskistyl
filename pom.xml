@@ -10,7 +10,7 @@
     <modules>
         <module>allegro-api</module>
         <module>allegro-provider</module>
-        <module>magazyn-front</module>
+        <module>magazyn-service</module>
     </modules>
     
     <properties>
