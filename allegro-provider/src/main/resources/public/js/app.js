@@ -7,11 +7,13 @@ angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit']
         .controller("index", ["$scope", "$resource", function ($scope, $resource) {
                 var login = $resource("http://localhost:8080/loginAllegro?key=:key&login=:login&password=:password");
                 var soldItems = $resource("http://localhost:8080/soldItems?session=:session");
-                var dbItems = $resource("http://localhost:8080/item/");
+                var dbItems = $resource("http://localhost:8090/item/");
                 $scope.ui = "btn btn-default";
                 $scope.cardinals = {};
-                $scope.itemsToDB = [];
-                
+                $scope.db = {
+                    itemsToDB: []
+                };
+
                 $scope.doLogin = function (cardinals) {
                     var token = login.get({key: cardinals.key, login: cardinals.login, password: cardinals.password});
 //                    var token = allegro.get({login: $scope.login});
@@ -24,6 +26,7 @@ angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit']
                     var result = soldItems.get({session: $scope.cardinals.session});
                     result.$promise.then(function (data) {
                         $scope.grid_options.data = data.soldItemsList.item;
+                        $scope.db.itemsToDB = data.soldItemsList.item;
                     });
                 };
                 $scope.grid_options = {
@@ -33,15 +36,14 @@ angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit']
                     ],
                     data: []
                 };
-                $scope.saveItems = function (itmes) {
-                    for (var i in itmes) {
+                $scope.saveItems = function () {
+                    $scope.db.itemsToDB.forEach(function (entry) {
                         var item = {};
-                        item.allegroId = item['id'];
-                        item.title = item['itemTitle'];
-                        item.imgLink = item['itemThumbnailUrl'];
-                        $scope.itemsToDB.push(item);
+                        item.allegroId = entry['itemId'];
+                        item.title = entry['itemTitle'];
+                        item.imgLink = entry['itemThumbnailUrl'];
                         dbItems.save(item);
-                    }
+                    });
                 };
                 $scope.showClients = function () {
 

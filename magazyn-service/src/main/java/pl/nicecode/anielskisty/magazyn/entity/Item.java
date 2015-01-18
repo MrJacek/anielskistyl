@@ -30,14 +30,14 @@ public class Item implements Serializable {
 
     private String imgLink;
 
-    private int allegroIid;
+    private int allegroId;
 
-    public int getAllegroIid() {
-        return allegroIid;
+    public int getAllegroId() {
+        return allegroId;
     }
 
-    public void setAllegroIid(int allegroIid) {
-        this.allegroIid = allegroIid;
+    public void setAllegroId(int allegroIid) {
+        this.allegroId = allegroIid;
     }
 
     public int getId() {
@@ -66,7 +66,7 @@ public class Item implements Serializable {
 
     @Override
     public String toString() {
-        return "Item [" + "id=" + id + ", title=" + title + ", imgLink=" + imgLink + ", allegroIid=" + allegroIid + ']';
+        return "Item [" + "id=" + id + ", title=" + title + ", imgLink=" + imgLink + ", allegroIid=" + allegroId + ']';
     }
 
 }
