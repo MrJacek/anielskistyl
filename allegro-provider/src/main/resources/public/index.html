@@ -1,62 +1,71 @@
 <!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-    <head>
-        <meta charset="utf-8"/> 
-        <title>allegro-provider-front</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-resource.js"></script>
-        <script type="text/javascript" src="https://raw.githubusercontent.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-0.12.0.min.js"></script>
-        <script type="text/javascript" src="js/ui-grid-stable.min.js"></script>
-        <link rel="styleSheet" href="css/ui-grid-stable.min.css"/>
-        <link rel="styleSheet" href="css/style.css"/>
-        <script type="text/javascript"  src="js/app.js"></script>
+<head>
+    <meta charset="utf-8"/>
+    <title>allegro-provider-front</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-resource.js"></script>
+    <script type="text/javascript"
+            src="https://raw.githubusercontent.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script type="text/javascript" src="js/ui-grid-stable.min.js"></script>
+    <link rel="styleSheet" href="css/ui-grid-stable.min.css"/>
+    <link rel="styleSheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/app.js"></script>
 
-    </head>
-    <body ng-app='root'>
+</head>
+<body ng-app='root'>
 
-        <div ng-controller="index" >
-            <div class="alert alert-success" role="alert">
-                {{cardinals.login}} {{cardinals.session}}
-            </div>
-            <div class="container">
-                <accordion close-others="oneAtATime">
-                    <accordion-group heading="Allegro connection" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">              
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="input-group">
-                                    <span class="input-group-addon">Allegro key</span>
-                                    <input ng-model="cardinals.key" type="text"></input>
-                                    <span class="input-group-addon">Allegro login</span>
-                                    <input ng-model="cardinals.login" type="text"></input>
-                                    <span class="input-group-addon">Allegro password</span>
-                                    <input ng-model="cardinals.password" type="password"></input>
-                                </div>
-                                <button ng-href='#here' ng-click="doLogin(cardinals)" class="{{ui}}">Connect to allegro</button>
-                            </div>
+<div ng-controller="index">
+    <div class="alert alert-success" role="alert">
+        {{cardinals.login}} {{cardinals.session}}
+    </div>
+    <div class="container">
+        <accordion close-others="oneAtATime">
+            <accordion-group heading="Allegro connection" is-open="status.isFirstOpen"
+                             is-disabled="status.isFirstDisabled">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-addon">Allegro key</span>
+                            <input ng-model="cardinals.key" type="text"></input>
+                            <span class="input-group-addon">Allegro login</span>
+                            <input ng-model="cardinals.login" type="text"></input>
+                            <span class="input-group-addon">Allegro password</span>
+                            <input ng-model="cardinals.password" type="password"></input>
                         </div>
-                    </accordion-group> 
-                    <accordion-group heading="Actions" >
-                        <div class="row">
-                            <button class='btn btn-default' ng-click="showSoldItems()">Pokaz sprzedane przedmioty</button>
-                            <button class='btn btn-default' ng-click="saveItems()">Zapisz sprzedane przedmioty w bazie</button>
-                            <button class='btn btn-default' ng-click="showClients()">Pokaz klientow</button>
-                        </div>
-                    </accordion-group>
-                    <accordion-group heading="Items" >
-                        <div ng-repeat="item in grid_options.data">{{item['itemTitle']}}
-                            <div style="height: 48px">
-                                <img ng-src="{{item['itemThumbnailUrl']}}" style="margin:auto;"/>
-                            </div>
-                        </div>
-                        <!--<div id="grid1" ui-grid="items.grid_option" class="grid"></div>-->
-                    </accordion-group>
-                    <accordion-group heading="Baza danych" >
-                    </accordion-group>
-                </accordion>
+                        <button ng-href='#here' ng-click="doLogin(cardinals)" class="{{ui}}">Connect to allegro</button>
+                    </div>
+                </div>
+            </accordion-group>
+            <accordion-group heading="Actions">
+                <div class="row">
+                    <button class='btn btn-default' ng-click="showSoldItems()">Pokaz sprzedane przedmioty</button>
+                    <button class='btn btn-default' ng-click="saveItems()">Zapisz sprzedane przedmioty w bazie</button>
+                    <button class='btn btn-default' ng-click="showJournalDeals()">Pokaz klientow</button>
+                </div>
+            </accordion-group>
+            <accordion-group heading="Items">
+                <div ng-repeat="item in grid_options.data">{{item['itemTitle']}}
+                    <div style="height: 48px">
+                        <img ng-src="{{item['itemThumbnailUrl']}}" style="margin:auto;"/>
+                    </div>
+                </div>
+                <!--<div id="grid1" ui-grid="items.grid_option" class="grid"></div>-->
+            </accordion-group>
+            <accordion-group heading="Dziennik Transakcji">
+                <div ng-repeat="item in grid_options_journal_deals.data">
+                    <span class="label label-info"> {{item['dealTransactionId']}}</span>
+                    <span class="label label-info">{{[item['dealEventType']]}}</span>
+                    <span class="label label-info">{{item['dealBuyerId']}}</span>
+                    <span class="badge">{{item['dealQuantity']}}</span>
+                </div>
+            </accordion-group>
+        </accordion>
 
-            </div>
-        </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>
