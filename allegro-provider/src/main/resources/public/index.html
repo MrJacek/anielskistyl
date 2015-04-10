@@ -57,10 +57,10 @@
             </accordion-group>
             <accordion-group heading="Dziennik Transakcji">
                 <div ng-repeat="item in grid_options_journal_deals.data">
-                    <span class="label label-info"> {{item['dealTransactionId']}}</span>
-                    <span class="label label-info">{{[item['dealEventType']]}}</span>
-                    <span class="label label-info">{{item['dealBuyerId']}}</span>
-                    <span class="badge">{{item['dealQuantity']}}</span>
+                    <span class="label label-info"> {{item['time']}}</span>
+                    <span class="label label-info">{{ item['buyerLogin']}}</span>
+                    <span class="label label-info">{{item['transactionType']}}</span>
+                    <span class="badge">{{item['count']}}</span>
                 </div>
             </accordion-group>
         </accordion>

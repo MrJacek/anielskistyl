@@ -9,7 +9,6 @@ angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit']
         var soldItems = $resource("http://localhost:8080/soldItems?session=:session");
         var dbItems = $resource("http://localhost:8090/item/");
         var journalDeals = $resource("http://localhost:8080/journalDeals?session=:session");
-        var transactionType = $resource("http://localhost:8080/transactionType?id=:id");
         $scope.ui = "btn btn-default";
         $scope.cardinals = {};
         $scope.db = {
@@ -42,11 +41,10 @@ angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit']
         };
         $scope.grid_options_journal_deals = {
             columnDefs: [
-                {name: 'Id', field: 'dealEventId'},
-                {name: 'IdTransakcji', field: 'dealTransactionId'},
-                {name: 'TypZdarzenia', field: 'dealEventType'},
-                {name: 'Kupujacy', field: 'dealBuyerId'},
-                {name: 'Ilosc', field: 'dealQuantity'}
+                {name: 'Id', field: 'time'},
+                {name: 'kupujacy', field: 'buyerLogin'},
+                {name: 'TypZdarzenia', field: 'transactionType'},
+                {name: 'Ilosc', field: 'count'}
             ],
             data: []
         };
@@ -62,13 +60,7 @@ angular.module('root', ["ngResource", "ui.bootstrap", 'ui.grid', 'ui.grid.edit']
         $scope.showJournalDeals = function () {
             var result = journalDeals.get({session: $scope.cardinals.session});
             result.$promise.then(function (data) {
-                $scope.grid_options_journal_deals.data = data.siteJournalDeals.item;
-            });
-        };
-        $scope.get = function () {
-            var result = journalDeals.get({session: $scope.cardinals.session});
-            result.$promise.then(function (data) {
-                $scope.grid_options_journal_deals.data = data.siteJournalDeals.item;
+                $scope.grid_options_journal_deals.data = data.transactions;
             });
         };
     }]);
