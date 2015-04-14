@@ -1,6 +1,18 @@
 package pl.nicecode.anielskisty.allegroprovider.ws;
 
-import allegro.api.*;
+import allegro.api.ArrayOfLong;
+import allegro.api.DoGetMySoldItemsRequest;
+import allegro.api.DoGetMySoldItemsResponse;
+import allegro.api.DoGetPostBuyDataRequest;
+import allegro.api.DoGetPostBuyDataResponse;
+import allegro.api.DoGetPostBuyFormsDataForSellersRequest;
+import allegro.api.DoGetPostBuyFormsDataForSellersResponse;
+import allegro.api.DoGetSiteJournalDealsRequest;
+import allegro.api.DoGetSiteJournalDealsResponse;
+import allegro.api.DoLoginRequest;
+import allegro.api.DoLoginResponse;
+import allegro.api.DoQuerySysStatusRequest;
+import allegro.api.DoQuerySysStatusResponse;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 import pl.nicecode.anielskisty.allegroprovider.builder.LoginBuilder;
@@ -62,15 +74,27 @@ public class AllegroClient extends WebServiceGatewaySupport {
         return response;
     }
 
-    public DoGetPostBuyDataResponse getBuyPostData(String sessionHandle,Long dealId) {
+    public DoGetPostBuyDataResponse getBuyPostData(String sessionHandle, Long dealId) {
         DoGetPostBuyDataRequest request = new DoGetPostBuyDataRequest();
         request.setSessionHandle(sessionHandle);
-        ArrayOfLong dealIdArray=new ArrayOfLong();
+        ArrayOfLong dealIdArray = new ArrayOfLong();
         dealIdArray.getItem().add(dealId);
         request.setItemsArray(dealIdArray);
-                DoGetPostBuyDataResponse response =
-                        DoGetPostBuyDataResponse.class.cast(getWebServiceTemplate().marshalSendAndReceive(
+        DoGetPostBuyDataResponse response =
+                DoGetPostBuyDataResponse.class.cast(getWebServiceTemplate().marshalSendAndReceive(
                         request, new SoapActionCallback(allegroURI + "/goGetPostBuyDataResponse")));
+        return response;
+    }
+
+    public DoGetPostBuyFormsDataForSellersResponse getBuyerData(String sessiongId, long transactionId) {
+        DoGetPostBuyFormsDataForSellersRequest request = new DoGetPostBuyFormsDataForSellersRequest();
+        request.setSessionId(sessiongId);
+        ArrayOfLong arrayOfLong = new ArrayOfLong();
+        arrayOfLong.getItem().add(transactionId);
+        request.setTransactionsIdsArray(arrayOfLong);
+        DoGetPostBuyFormsDataForSellersResponse response =
+                DoGetPostBuyFormsDataForSellersResponse.class.cast(getWebServiceTemplate().marshalSendAndReceive(
+                        request, new SoapActionCallback(allegroURI + "/doGetPostBuyFormsDataForSellers")));
         return response;
     }
 }
