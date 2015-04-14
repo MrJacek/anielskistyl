@@ -1,0 +1,11 @@
+database:
+    image: postgres:latest
+    volumes:
+        - ./db-data:/var/lib/postgresql/data
+    ports:
+        - "5432:5432"
+    privileged: true
+    environment:
+        POSTGRES_USER: alf
+        POSTGRES_PASSWORD: alf
+

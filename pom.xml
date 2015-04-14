@@ -11,15 +11,16 @@
         <module>allegro-api</module>
         <module>allegro-provider</module>
         <module>magazyn-service</module>
+        <module>contractor</module>
     </modules>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <allegro.key>${env.ALLEGRO_KEY}</allegro.key>
-        <allegro.user>${env.ALLEGRO_USER}</allegro.user>
-        <allegro.password>${env.ALLEGRO_PASSWORD}</allegro.password>
+        <!--<allegro.key>${env.ALLEGRO_KEY}</allegro.key>-->
+        <!--<allegro.user>${env.ALLEGRO_USER}</allegro.user>-->
+        <!--<allegro.password>${env.ALLEGRO_PASSWORD}</allegro.password>-->
     </properties>
     
     <repositories>
@@ -36,7 +37,19 @@
             <url>http://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
-   
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.1.8.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <pluginManagement>
             <plugins>
