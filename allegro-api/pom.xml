@@ -9,8 +9,8 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <artifactId>allegro-provider</artifactId>
-
+    <artifactId>allegro-api</artifactId>
+    <packaging>jar</packaging>
      
     <dependencyManagement>
         <dependencies>
@@ -18,7 +18,7 @@
                 <!-- Import dependency management from Spring Boot -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.1.8.RELEASE</version>
+                <version>1.1.10.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -26,46 +26,26 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-core</artifactId>
-        </dependency>
-        <!--        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>-->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>allegro-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-            <type>jar</type>
         </dependency>
     </dependencies>
     <build>
         <plugins>
+            <!-- tag::wsdl[] -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.2</version>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
                 <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <schemaLanguage>WSDL</schemaLanguage>
+                    <generatePackage>allegro.api</generatePackage>
+                    <forceRegenerate>true</forceRegenerate>
+                    <schemas>
+                        <schema>
+                            <url>https://webapi.allegro.pl/service.php?wsdl</url>
+                        </schema>
+                    </schemas>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
