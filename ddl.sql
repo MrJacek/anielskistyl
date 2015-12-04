@@ -47,11 +47,6 @@ CREATE TABLE product_version (
   unit_id UUID REFERENCES unit(id)
 );
 
-CREATE TABLE  components (
-  id UUID PRIMARY KEY NOT NULL,
-  product_version_id UUID REFERENCES product_version(id)
-);
-
 CREATE TABLE indent_details (
   id UUID PRIMARY KEY NOT NULL,
   indent_id UUID REFERENCES indent(id),

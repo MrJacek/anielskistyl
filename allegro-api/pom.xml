@@ -28,6 +28,7 @@
         <dependency>
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-core</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
@@ -36,10 +37,17 @@
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.12.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <schemaLanguage>WSDL</schemaLanguage>
                     <generatePackage>allegro.api</generatePackage>
-                    <forceRegenerate>true</forceRegenerate>
                     <schemas>
                         <schema>
                             <url>https://webapi.allegro.pl/service.php?wsdl</url>

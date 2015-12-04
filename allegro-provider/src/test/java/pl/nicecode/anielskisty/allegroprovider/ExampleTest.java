@@ -12,6 +12,10 @@ import org.junit.Test;
  *
  * @author jhojczak
  */
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringApplicationConfiguration(SampleHypermediaJpaApplication.class)
+//@WebAppConfiguration
+//@DirtiesContext
 public class ExampleTest {
     
     @Test

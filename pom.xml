@@ -22,20 +22,20 @@
         <allegro.password>${env.ALLEGRO_PASSWORD}</allegro.password>
     </properties>
     
-    <repositories>
-        <repository>
-            <id>spring-releases</id>
-            <name>Spring Releases</name>
-            <url>http://repo.spring.io/libs-release</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-releases</id>
-            <name>Spring Releases</name>
-            <url>http://repo.spring.io/libs-release</url>
-        </pluginRepository>
-    </pluginRepositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>spring-releases</id>-->
+            <!--<name>Spring Releases</name>-->
+            <!--<url>http://repo.spring.io/libs-release</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>spring-releases</id>-->
+            <!--<name>Spring Releases</name>-->
+            <!--<url>http://repo.spring.io/libs-release</url>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
    
     <build>
         <pluginManagement>
@@ -64,18 +64,6 @@
                         <aggregate>true</aggregate>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.jvnet.jaxb2.maven2</groupId>
-                    <artifactId>maven-jaxb2-plugin</artifactId>
-                    <version>0.9.0</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>generate</goal>
-                            </goals>
-                        </execution>
-                    </executions> 
-                </plugin>
                 <!--To run integration tests-->
                 <plugin>
                     <artifactId>maven-failsafe-plugin</artifactId>
@@ -93,35 +81,6 @@
                             </configuration>    
                         </execution>
                     </executions>
-                </plugin>
-                <!--Jetty embeded for integration tests-->
-                <plugin>
-                    <groupId>org.mortbay.jetty</groupId>
-                    <artifactId>jetty-maven-plugin</artifactId>
-                    <version>8.1.15.v20140411</version>
-                    <configuration>
-                        <stopKey>alpha</stopKey>
-                        <stopPort>9099</stopPort>
-                    </configuration>
-                    <executions>                
-                        <execution>
-                            <id>start-jetty</id>
-                            <phase>pre-integration-test</phase>
-                            <goals>
-                                <goal>deploy-war</goal>
-                            </goals>
-                            <configuration>
-                                <daemon>true</daemon>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <id>stop-jetty</id>
-                            <phase>post-integration-test</phase>
-                            <goals>
-                                <goal>stop</goal>
-                            </goals>
-                        </execution>
-                    </executions>    
                 </plugin>
                 <plugin>
                     <groupId>org.eluder.coveralls</groupId>
