@@ -15,5 +15,6 @@ hs_err_pid*
 */nb-configuration.xml
 /target/
 .idea/*
-/.idea/*
+allegro-api/.idea/*
+allegro-provider/.idea/*
 *.iml
