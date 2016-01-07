@@ -5,7 +5,7 @@
     <parent>
         <groupId>pl.nicecode.anielskistyl</groupId>
         <artifactId>anielskistyl</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -18,7 +18,7 @@
                 <!-- Import dependency management from Spring Boot -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.3.0.RELEASE</version>
+                <version>1.3.1.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -50,7 +50,8 @@
                     <generatePackage>allegro.api</generatePackage>
                     <schemas>
                         <schema>
-                            <url>https://webapi.allegro.pl/service.php?wsdl</url>
+                            <url>https://webapi.allegro.pl.webapisandbox.pl/service.php?wsdl</url>
+                           <!-- <url>https://webapi.allegro.pl/service.php?wsdl</url>-->
                         </schema>
                     </schemas>
                 </configuration>

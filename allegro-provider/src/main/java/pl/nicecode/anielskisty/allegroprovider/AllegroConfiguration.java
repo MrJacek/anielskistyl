@@ -10,26 +10,26 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 //import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import pl.nicecode.anielskisty.allegroprovider.ws.AllegroClient;
 
-@Configuration
-@ComponentScan
-@EnableAutoConfiguration
+//@Configuration
+//@ComponentScan
+//@EnableAutoConfiguration
 public class AllegroConfiguration {
 
-    @Bean
-    public Jaxb2Marshaller marshaller() {
-        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setContextPath("allegro.api");
-        return marshaller;
-    }
-
-    @Bean
-    public AllegroClient allegroClient(Jaxb2Marshaller marshaller) {
-        AllegroClient client = new AllegroClient();
-        client.setDefaultUri("https://webapi.allegro.pl/service.php");
-        client.setMarshaller(marshaller);
-        client.setUnmarshaller(marshaller);
-        return client;
-    }
+//    @Bean
+//    public Jaxb2Marshaller marshaller() {
+//        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+//        marshaller.setContextPath("allegro.api");
+//        return marshaller;
+//    }
+//
+//    @Bean
+//    public AllegroClient allegroClient(Jaxb2Marshaller marshaller) {
+//        AllegroClient client = new AllegroClient();
+//        client.setDefaultUri("https://webapi.allegro.pl/service.php");
+//        client.setMarshaller(marshaller);
+//        client.setUnmarshaller(marshaller);
+//        return client;
+//    }
 
 //    @Configuration
 //    @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)

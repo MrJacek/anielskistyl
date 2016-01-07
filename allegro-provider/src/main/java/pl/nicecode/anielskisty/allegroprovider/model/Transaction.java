@@ -13,6 +13,7 @@ public class Transaction {
     String time;
     String transactionType;
     String buyerLogin;
+    String buyerEmail;
     int count;
 
     public String getTime() {

@@ -1,18 +1,6 @@
 package pl.nicecode.anielskisty.allegroprovider.ws;
 
-import allegro.api.ArrayOfLong;
-import allegro.api.DoGetMySoldItemsRequest;
-import allegro.api.DoGetMySoldItemsResponse;
-import allegro.api.DoGetPostBuyDataRequest;
-import allegro.api.DoGetPostBuyDataResponse;
-import allegro.api.DoGetPostBuyFormsDataForSellersRequest;
-import allegro.api.DoGetPostBuyFormsDataForSellersResponse;
-import allegro.api.DoGetSiteJournalDealsRequest;
-import allegro.api.DoGetSiteJournalDealsResponse;
-import allegro.api.DoLoginRequest;
-import allegro.api.DoLoginResponse;
-import allegro.api.DoQuerySysStatusRequest;
-import allegro.api.DoQuerySysStatusResponse;
+import allegro.api.*;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 import pl.nicecode.anielskisty.allegroprovider.builder.LoginBuilder;
@@ -24,7 +12,7 @@ public class AllegroClient extends WebServiceGatewaySupport {
 
     private static final int COUNTRY_ID_POLAND = 1;
     private static final int SYSTEM_VAR = 1;
-    //    private final String allegroURI = "https://webapi.allegro.pl.webapisandbox.pl/service.php";
+//        private final String allegroURI = "https://webapi.allegro.pl.webapisandbox.pl/service.php";
     private final String allegroURI = "https://webapi.allegro.pl/service.php";
 
 

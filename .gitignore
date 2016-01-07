@@ -15,4 +15,5 @@ hs_err_pid*
 */nb-configuration.xml
 /target/
 .idea/*
+/.idea/*
 *.iml
