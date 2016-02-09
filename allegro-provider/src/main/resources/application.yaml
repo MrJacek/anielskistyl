@@ -1,9 +1,9 @@
 spring:
   datasource:
-#    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost/as
-    username: as
-    password: as
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/anielskistyl
+    username: anielskistyl
+    password: anielskistyle
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true

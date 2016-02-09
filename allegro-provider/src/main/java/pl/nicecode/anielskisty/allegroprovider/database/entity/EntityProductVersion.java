@@ -8,7 +8,7 @@ import java.util.UUID;
  * Created by jhojczak on 1/5/16.
  */
 @Entity
-@Table(name = "product_version", schema = "public", catalog = "as")
+@Table(name = "product_version", schema = "public", catalog = "anielskistyl")
 public class EntityProductVersion implements Serializable {
     private UUID id;
     private String type;

@@ -7,7 +7,7 @@ import java.util.UUID;
  * Created by jhojczak on 1/5/16.
  */
 @Entity
-@Table(name = "unit", schema = "public", catalog = "as")
+@Table(name = "unit", schema = "public", catalog = "anielskistyl")
 public class EntityUnit {
     private UUID id;
     private String name;

@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import pl.nicecode.anielskisty.allegroprovider.database.dao.DaoTradingPartners;
 import pl.nicecode.anielskisty.allegroprovider.database.entity.EntityTradingPartners;
@@ -60,6 +61,7 @@ public class AllegroController {
 
     @RequestMapping(value = "/sync")
     @ResponseBody
+    @Transactional
     public void journalDeals(@RequestParam(value = "session")final String session) {
         Transactions transactions = new Transactions();
 

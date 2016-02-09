@@ -9,7 +9,7 @@ import java.util.UUID;
  * Created by jhojczak on 1/5/16.
  */
 @Entity
-@Table(name = "shipment", schema = "public", catalog = "as")
+@Table(name = "shipment", schema = "public", catalog = "anielskistyl")
 public class EntityShipment implements Serializable {
     private UUID id;
     private String shipmentType;

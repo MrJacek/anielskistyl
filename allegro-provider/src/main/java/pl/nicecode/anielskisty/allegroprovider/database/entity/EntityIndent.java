@@ -10,7 +10,7 @@ import java.util.UUID;
  * Created by jhojczak on 1/5/16.
  */
 @Entity
-@Table(name = "indent", schema = "public", catalog = "as")
+@Table(name = "indent", schema = "public", catalog = "anielskistyl")
 public class EntityIndent implements Serializable{
     private UUID id;
     private Timestamp createDate;
